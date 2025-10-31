@@ -1,10 +1,10 @@
-package it.nova.logger;
+package it.nova.forwarder;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SubscriberApplicationTests {
+class ForwarderApplicationTests {
 
 	@Test
 	void contextLoads() {
