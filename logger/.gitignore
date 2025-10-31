@@ -1,0 +1,51 @@
+### Build Artifacts ###
+# Maven target directory (già presente, ma per chiarezza)
+/target/
+
+# Log files and temporary directories (Aggiunti per completezza)
+*.log
+logs/
+tmp/
+temp/
+
+# Keep the content of target in src/main and src/test, but ignore the main target
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Maven Wrapper JAR (già presente)
+.mvn/wrapper/maven-wrapper.jar
+
+### IDE Specific Files ###
+
+# STS (Eclipse-based)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+### Operating System Files ###
+# File di sistema che non devono mai essere tracciati (Aggiunti)
+.DS_Store
+Thumbs.db

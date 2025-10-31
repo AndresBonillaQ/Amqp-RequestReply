@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizzatore Messaggi Falliti (DLQ)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #cc0000; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; } /* Aggiunto vertical-align: top per le celle */
+        th { background-color: #f2f2f2; }
+        .snippet { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .detail { font-size: small; color: #555; margin-top: 5px; } /* Spazio aggiunto */
+        .header-list { list-style: none; padding: 0; margin: 0; } /* Stile per la lista */
+        .header-list li { margin-bottom: 3px; border-bottom: 1px dashed #eee; padding-bottom: 3px; }
+        .key { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>🚨 Log dei Messaggi Falliti (DLQ)</h1>
+
+<p>Totale messaggi registrati: <span th:text="${#lists.size(errors)}">0</span></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Timestamp</th>
+        <th>Exchange Ricevuto</th>
+        <th>Coda Consumatrice (Listener)</th>
+        <th>Routing Key Originale</th>
+        <th>Motivo Fallimento</th>
+        <th>Corpo (Anteprima)</th>
+        <th>Header</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="msg : ${errors}">
+        <td th:text="${msg.timestamp}">2025-10-28 10:00:00</td>
+
+        <td th:text="${msg.receivedExchange}">exchange.name</td>
+
+        <td th:text="${msg.consumerQueue}">queue.listener.name</td>
+
+        <td th:text="${msg.originalRoutingKey}">topic.request.info</td>
+
+        <td th:text="${msg.reason}">rejected</td>
+
+        <td class="snippet" th:text="${msg.bodySnippet}">{"id":123,"data":"payload..."}</td>
+
+        <td>
+            <div th:if="${#maps.isEmpty(msg.headers)}">Nessun Header</div>
+            <ul class="header-list" th:unless="${#maps.isEmpty(msg.headers)}">
+                <li th:each="entry : ${msg.headers}">
+                    <span class="key" th:text="${entry.key} + ':'">content-type:</span>
+                    <span th:text="${entry.value}">value</span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
