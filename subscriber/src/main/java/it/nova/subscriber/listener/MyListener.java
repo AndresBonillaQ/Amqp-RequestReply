@@ -15,7 +15,7 @@ public class MyListener {
     public String processInfoRequest(String request, Message message) {
         log.info("Info Processing: {}", request);
         try {
-            Thread.sleep(500);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -27,7 +27,7 @@ public class MyListener {
     public String processUrgentRequest(String request, Message message) {
         log.info("Urgent Processing: {}", request);
         try {
-            Thread.sleep(50);
+            Thread.sleep(400);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

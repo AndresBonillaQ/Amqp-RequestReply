@@ -4,7 +4,7 @@
 
 # --- 1. Stop RabbitMQ and publisher ---
 echo "Stopping RabbitMQ and publisher"
-docker stop rabbitmq-host publisher
+docker stop rabbitmq-host publisher prometheus
 
 # --- 2. Stop all subscribers ---
 echo "Stopping all subscribers..."

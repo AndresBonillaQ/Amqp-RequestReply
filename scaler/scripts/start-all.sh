@@ -8,7 +8,7 @@ echo "Removing all subscriber-* ..."
 
 # --- 2. Starting RabbitMQ and publisher ---
 echo "Starting RabbitMQ and publisher"
-docker start rabbitmq-host publisher
+docker start rabbitmq-host publisher prometheus rabbitmq-exporter
 
 # --- 3. Creating new subscriber ---
 echo "Deploying new subscriber..."
